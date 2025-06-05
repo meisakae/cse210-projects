@@ -16,15 +16,38 @@ public class Order
 
     public double GetTotalPrice()
     {
-        Total = 0;
+        double total = 0;
         foreach (var product in Products)
         {
-            total += product.GetTotalCost();
+            total += product.GetTotalPrice();
         }
 
         if (customer.LivesInUSA())
         {
-            
+            total += 5;
         }
+
+        else
+        {
+            total += 35;
+        }
+
+        return total;
+    }
+
+    public string GetPakingLable()
+    {
+        string labal = "";
+        foreach (var product in Products)
+        {
+            labal += product.GetProductInfo() + "\n";
+        }
+
+        return labal;
+    }
+
+    public string GetShippingLabale()
+    {
+        return $"{customer.GetName()}\n{customer.GetAddress().GetFullAddress()}";
     }
 }

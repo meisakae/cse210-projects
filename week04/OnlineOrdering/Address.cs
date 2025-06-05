@@ -23,6 +23,6 @@ public class Address
 
     public string GetFullAddress()
     {
-        re
+        return $"{street}\n{city}, {state}\n{country}";
     }
 }
